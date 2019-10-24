@@ -9,6 +9,9 @@ if(debug) {
 //!steal-remove-end
 
 const AppViewModel = DefineMap.extend("AppViewModel", {
+	page: 'string',
+	slug: 'string',
+	action: 'string',
   env: {
     default: () => ({NODE_ENV:'development'})
   },
@@ -22,5 +25,7 @@ const AppViewModel = DefineMap.extend("AppViewModel", {
 
 route.urlData = new RoutePushstate();
 route.register("{page}", { page: "home" });
+route.register('{page}/{slug}'', {slug: null });
+route.register('{page}/{slug}/{action}', {slug: null, action: null });
 
 export default AppViewModel;
